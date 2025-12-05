@@ -26,20 +26,6 @@ export function generateSecurePassword(): string {
 }
 
 /**
- * Verify Firebase ID token (for API routes)
- */
-export async function verifyIdToken(token: string): Promise<any> {
-  try {
-    const { auth } = await import('./services/firebase');
-    const { verifyIdToken: verifyToken } = await import('firebase/auth');
-    return await verifyToken(auth, token);
-  } catch (error) {
-    console.error('Error verifying token:', error);
-    return null;
-  }
-}
-
-/**
  * Create a Firebase Auth account for course access
  */
 export async function createCourseAccessAccount(
