@@ -1,8 +1,9 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function RecommendationsPage() {
+function RecommendationsContent() {
   const searchParams = useSearchParams();
   const name = searchParams.get('name') || 'User';
   const age = searchParams.get('age');
@@ -26,6 +27,21 @@ export default function RecommendationsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function RecommendationsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <RecommendationsContent />
+    </Suspense>
   );
 }
 
