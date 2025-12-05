@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import { useAuth } from '@/contexts/AuthContext';
 import { checkChatAccess, recordChatUsage } from '@/lib/services/chatUsage';
 
@@ -36,6 +37,20 @@ export default function Chat({ visaId, countryCode, visaName, visaDescription }:
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  const checkAccess = useCallback(async () => {
+    if (!user) return;
+    
+    try {
+      setCheckingAccess(true);
+      const access = await checkChatAccess(user);
+      setChatAccess(access);
+    } catch (error) {
+      console.error('[Chat] Error checking access:', error);
+    } finally {
+      setCheckingAccess(false);
+    }
+  }, [user]);
+
   // Check access and load welcome message on mount
   useEffect(() => {
     if (user) {
@@ -49,21 +64,7 @@ export default function Chat({ visaId, countryCode, visaName, visaDescription }:
       };
       setMessages([welcomeMessage]);
     }
-  }, [user, visaName]);
-
-  const checkAccess = async () => {
-    if (!user) return;
-    
-    try {
-      setCheckingAccess(true);
-      const access = await checkChatAccess(user);
-      setChatAccess(access);
-    } catch (error) {
-      console.error('[Chat] Error checking access:', error);
-    } finally {
-      setCheckingAccess(false);
-    }
-  };
+  }, [user, visaName, checkAccess]);
 
   const handleSend = async () => {
     if (!inputText.trim() || !user || !chatAccess?.canChat || loading) return;
@@ -158,9 +159,11 @@ export default function Chat({ visaId, countryCode, visaName, visaDescription }:
         className="fixed bottom-6 right-6 w-16 h-16 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 overflow-hidden border-2 border-indigo-600 z-50 group"
         aria-label="Open chat"
       >
-        <img 
+        <Image 
           src="/japa-girl.png" 
           alt="Japa AI Assistant" 
+          width={64}
+          height={64}
           className="w-full h-full object-cover"
         />
         {chatAccess && chatAccess.remainingQuestions !== undefined && chatAccess.remainingQuestions > 0 && (
@@ -185,9 +188,11 @@ export default function Chat({ visaId, countryCode, visaName, visaDescription }:
             <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-indigo-600 text-white rounded-t-2xl sm:rounded-t-2xl">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/30 flex-shrink-0">
-                  <img 
+                  <Image 
                     src="/japa-girl.png" 
                     alt="Your Visa Expert" 
+                    width={48}
+                    height={48}
                     className="w-full h-full object-cover"
                   />
                 </div>

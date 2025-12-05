@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function LandingPage() {
   const router = useRouter();
@@ -63,9 +64,11 @@ export default function LandingPage() {
             <div className="flex flex-col items-center gap-3 pt-4 border-t border-gray-700/30">
               <p className="text-sm text-gray-400">In Partnership with</p>
               <div className="flex items-center gap-3">
-                <img 
+                <Image 
                   src="/first-path.png" 
                   alt="FirstPath Immigration LLC" 
+                  width={32}
+                  height={32}
                   className="h-8 w-auto object-contain"
                 />
                 <div className="text-xl font-semibold text-white">FirstPath Immigration</div>
@@ -81,9 +84,11 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Image on Left */}
             <div className="relative">
-              <img
+              <Image
                 src="/japa woman.jpg"
                 alt="Immigration Expert"
+                width={800}
+                height={600}
                 className="w-full h-auto rounded-2xl shadow-2xl object-cover"
               />
             </div>
@@ -188,7 +193,7 @@ export default function LandingPage() {
             {/* UK Visa Guide */}
             <div className="relative bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-indigo-200">
               <div className="mb-4">
-                <img src="/uk.webp" alt="UK Flag" className="w-16 h-16 object-contain" />
+                <Image src="/uk.webp" alt="UK Flag" width={64} height={64} className="w-16 h-16 object-contain" />
               </div>
               <div className="inline-block bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm font-bold mb-3">
                 10 Step-by-Step UK Visa Guides
@@ -233,7 +238,7 @@ export default function LandingPage() {
             {/* Canada Visa Guide */}
             <div className="relative bg-gradient-to-br from-red-50 to-pink-50 p-8 rounded-2xl border-2 border-red-200">
               <div className="mb-4">
-                <img src="/canada.webp" alt="Canada Flag" className="w-16 h-16 object-contain" />
+                <Image src="/canada.webp" alt="Canada Flag" width={64} height={64} className="w-16 h-16 object-contain" />
               </div>
               <div className="inline-block bg-red-600 text-white px-4 py-1.5 rounded-full text-sm font-bold mb-3">
                 10 Step-by-Step Canada Visa Guides

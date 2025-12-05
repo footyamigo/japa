@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '@/contexts/AuthContext';
 import { signOutUser } from '@/lib/services/firebase';
 import { getVisasByCountry, Visa } from '@/lib/services/visas';
@@ -172,7 +173,7 @@ export default function GuidesPage() {
                 className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-indigo-200 hover:border-indigo-400 transition-all text-left group"
               >
                 <div className="mb-4">
-                  <img src="/uk.webp" alt="UK Flag" className="w-16 h-16 object-contain" />
+                  <Image src="/uk.webp" alt="UK Flag" width={64} height={64} className="w-16 h-16 object-contain" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">United Kingdom</h3>
                 <p className="text-gray-600 mb-4">
@@ -192,7 +193,7 @@ export default function GuidesPage() {
                 className="bg-gradient-to-br from-red-50 to-pink-50 p-8 rounded-2xl border-2 border-red-200 hover:border-red-400 transition-all text-left group"
               >
                 <div className="mb-4">
-                  <img src="/canada.webp" alt="Canada Flag" className="w-16 h-16 object-contain" />
+                  <Image src="/canada.webp" alt="Canada Flag" width={64} height={64} className="w-16 h-16 object-contain" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Canada</h3>
                 <p className="text-gray-600 mb-4">
@@ -211,9 +212,11 @@ export default function GuidesPage() {
                 <div className="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-6 mt-8">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-indigo-300 flex-shrink-0">
-                      <img 
+                      <Image 
                         src="/japa-girl.png" 
                         alt="Maya - Your Visa Expert" 
+                        width={48}
+                        height={48}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -244,10 +247,12 @@ export default function GuidesPage() {
 
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-2">
-                <img 
+                <Image 
                   src={selectedCountry === 'UK' ? '/uk.webp' : '/canada.webp'} 
                   alt={selectedCountry === 'UK' ? 'UK Flag' : 'Canada Flag'} 
-                  className="w-8 h-8 object-contain" 
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
                 />
                 <h2 className="text-3xl font-bold text-gray-900">
                   {selectedCountry === 'UK' ? 'United Kingdom' : 'Canada'} Visa Guides

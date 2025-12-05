@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Script from 'next/script';
+import Image from 'next/image';
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -256,9 +257,11 @@ export default function CheckoutPage() {
           <div className="mb-8 flex flex-col items-center gap-3 pt-4 border-t border-gray-300">
             <p className="text-sm text-gray-500">In Partnership with</p>
             <div className="flex items-center gap-3">
-              <img 
+              <Image 
                 src="/first-path.png" 
                 alt="FirstPath Immigration" 
+                width={32}
+                height={32}
                 className="h-8 w-auto object-contain"
               />
               <div className="text-lg sm:text-xl font-semibold text-gray-900">FirstPath Immigration</div>
