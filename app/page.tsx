@@ -39,7 +39,7 @@ export default function LandingPage() {
             <div className="mb-12 max-w-4xl mx-auto px-4">
               <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: '16/9' }}>
                 <iframe
-                  src="https://player.vimeo.com/video/1143076368?autoplay=0&title=0&byline=0&portrait=0&responsive=1"
+                  src="https://player.vimeo.com/video/1144107182?autoplay=0&title=0&byline=0&portrait=0&responsive=1"
                   className="absolute top-0 left-0 w-full h-full"
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture"
