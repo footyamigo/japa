@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { trackPurchase } from '@/lib/gtm';
-import { trackMetaPurchase } from '@/lib/metaPixel';
 
 export default function PaymentSuccessPage() {
   const router = useRouter();
@@ -33,14 +32,6 @@ export default function PaymentSuccessPage() {
           price: 67000,
           quantity: 1,
         }],
-      });
-      
-      // Track Meta Pixel purchase
-      trackMetaPurchase({
-        value: 67000,
-        currency: 'NGN',
-        content_name: 'Japa Course - UK & Canada Visa Guide',
-        content_ids: ['japa-course'],
       });
     } else {
       // If no credentials found, redirect to home

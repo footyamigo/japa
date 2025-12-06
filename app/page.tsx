@@ -4,14 +4,12 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { trackLandingPageView } from '@/lib/gtm';
-import { trackMetaLandingPageView } from '@/lib/metaPixel';
 
 export default function LandingPage() {
   const router = useRouter();
 
   useEffect(() => {
     trackLandingPageView();
-    trackMetaLandingPageView();
   }, []);
 
   const handleGetStarted = () => {
