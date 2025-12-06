@@ -96,7 +96,7 @@ export default function LiveActivityNotifications() {
 
   return (
     <div
-      className={`fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-80 z-50 transition-all duration-500 ease-out ${
+      className={`fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-80 z-[60] transition-all duration-500 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
     >

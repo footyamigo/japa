@@ -1,25 +1,30 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { trackLandingPageView } from '@/lib/gtm';
 import LiveActivityNotifications from '@/components/LiveActivityNotifications';
+import GamifiedOnboarding from '@/components/GamifiedOnboarding';
 
 export default function LandingPage() {
   const router = useRouter();
+  const [showGamifiedFlow, setShowGamifiedFlow] = useState(false);
 
   useEffect(() => {
     trackLandingPageView();
   }, []);
 
   const handleGetStarted = () => {
-    router.push('/checkout');
+    setShowGamifiedFlow(true);
   };
 
   return (
     <div className="min-h-screen bg-white">
       <LiveActivityNotifications />
+      {showGamifiedFlow && (
+        <GamifiedOnboarding onClose={() => setShowGamifiedFlow(false)} />
+      )}
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white">
         <div className="absolute inset-0 bg-black/20"></div>
