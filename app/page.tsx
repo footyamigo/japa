@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { trackLandingPageView } from '@/lib/gtm';
+import LiveActivityNotifications from '@/components/LiveActivityNotifications';
 
 export default function LandingPage() {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <LiveActivityNotifications />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -446,6 +448,12 @@ export default function LandingPage() {
           >
             Get Instant Access Now - ₦67,000
           </button>
+          <p className="mt-4 text-xs text-gray-400 flex items-center justify-center gap-1.5">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            Payment powered by Flutterwave, All local payments accepted
+          </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-200">
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
@@ -471,6 +479,44 @@ export default function LandingPage() {
           </h2>
           <div className="space-y-6">
             {[
+              {
+                q: 'In a nutshell, what will I get after I enrol?',
+                a: (
+                  <>
+                    <p className="mb-4">
+                      After enrolling, you'll get <strong>instant access</strong> to a complete visa application system that has helped <strong>1,320+ people successfully Japa in the last 3 months</strong>.
+                    </p>
+                    <p className="mb-3 font-semibold text-gray-900">Here's exactly what you receive:</p>
+                    <ul className="space-y-2 mb-4 ml-4">
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2 font-bold mt-0.5">✓</span>
+                        <span><strong>20 Complete Visa Guides</strong> (10 for UK + 10 for Canada) covering work permits, study routes, and permanent residency options</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2 font-bold mt-0.5">✓</span>
+                        <span>Each guide includes <strong>step-by-step instructions</strong> you can follow, <strong>complete document checklists</strong> so you know exactly what to prepare, and <strong>video tutorials</strong> showing everything being done step-by-step</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2 font-bold mt-0.5">✓</span>
+                        <span><strong>Lifetime access</strong> to all materials, so you can learn at your own pace and refer back anytime</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-2 font-bold mt-0.5">✓</span>
+                        <span>Join a <strong>community of 1,320+ successful students</strong> and get <strong>24/7 access to licensed immigration experts</strong> who can answer your questions directly</span>
+                      </li>
+                    </ul>
+                    <p className="mb-3">
+                      Most importantly, you'll know <strong>exactly which visa route is best for you</strong>, what documents to prepare, how to fill out applications correctly, and avoid the common mistakes that lead to rejections.
+                    </p>
+                    <p className="mb-3">
+                      This saves you <strong>hundreds of thousands in consultation fees</strong> and <strong>months of confusion</strong>. All for <strong className="text-green-600">₦67,000</strong> - that's both UK and Canada courses for less than what most people spend on a single consultation with an immigration lawyer.
+                    </p>
+                    <p className="font-semibold text-gray-900">
+                      You'll have everything you need to start your application process immediately and potentially relocate within 3-6 months.
+                    </p>
+                  </>
+                ),
+              },
               {
                 q: 'Is this course really easy to follow?',
                 a: 'Yes! The course is designed by licensed immigration experts and structured to be easy-to-follow. We include video lessons showing everything step-by-step, and all documents needed are clearly listed. Over 1,320 students have successfully completed this course in the last 3 months.',
@@ -499,14 +545,14 @@ export default function LandingPage() {
                 q: 'How do I access support?',
                 a: 'You can chat with Maya, your personal visa expert, 24/7 directly from your course dashboard. Just click the chat icon in the bottom right corner to ask any questions about your visa application. Maya has helped over 1,320+ students and is available anytime you need guidance.',
               },
-              {
-                q: 'Is there a money-back guarantee?',
-                a: 'Yes! We offer a 30-day money-back guarantee. If you\'re not satisfied, we\'ll refund your money. But with 1,320+ successful users, we\'re confident you\'ll find value.',
-              },
             ].map((faq, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <h3 className="text-xl font-bold mb-2 text-gray-900">{faq.q}</h3>
-                <p className="text-gray-600">{faq.a}</p>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{faq.q}</h3>
+                {typeof faq.a === 'string' ? (
+                  <p className="text-gray-600">{faq.a}</p>
+                ) : (
+                  <div className="text-gray-600 space-y-3">{faq.a}</div>
+                )}
               </div>
             ))}
           </div>
@@ -528,6 +574,12 @@ export default function LandingPage() {
           >
             Get Instant Access Now - ₦67,000
           </button>
+          <p className="mt-4 text-xs text-gray-400 flex items-center justify-center gap-1.5">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            Payment powered by Flutterwave, All local payments accepted
+          </p>
           <p className="mt-6 text-sm text-gray-400">
             Taught by licensed immigration experts • Completed by 1,320+ students • 30-day money-back guarantee
           </p>
