@@ -7,7 +7,7 @@ import { AuthProvider } from '@/contexts/AuthContext'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Japa GPT - Visa Recommendations',
+  title: 'FirstPath Relocation: Japa to UK & Canada within 6months',
   description: 'Find your perfect visa path to UK, US, Canada, and Germany',
   icons: {
     icon: '/first-path.png',
