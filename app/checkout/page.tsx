@@ -1,12 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import Image from 'next/image';
+import { trackCheckoutPageView } from '@/lib/gtm';
+import { trackMetaCheckoutPageView } from '@/lib/metaPixel';
 
 export default function CheckoutPage() {
   const router = useRouter();
+
+  useEffect(() => {
+    trackCheckoutPageView();
+    trackMetaCheckoutPageView();
+  }, []);
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [formData, setFormData] = useState({
